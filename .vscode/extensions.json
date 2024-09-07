@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "biomejs.biome",
+    "gruntfuggly.todo-tree",
+    "hookyqr.minify",
+    "mechatroner.rainbow-csv",
+    "oderwat.indent-rainbow",
+    "streetsidesoftware.code-spell-checker"
+  ]
+}
