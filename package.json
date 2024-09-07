@@ -1,0 +1,17 @@
+{
+  "main": "dist/main.js",
+  "dependencies": {
+    "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.8.3",
+    "ts-loader": "^9.5.1",
+    "vitest": "^2.0.5",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "scripts": {
+    "build": "rm -r dist;webpack;",
+    "test": "vitest"
+  }
+}
