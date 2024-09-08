@@ -1,4 +1,5 @@
 import { MOUNTAINS } from "../../constants/mountains";
+import { SelectionPage } from "./selection";
 
 export class TitlePage {
   private readonly page: HTMLDivElement;
@@ -45,7 +46,7 @@ export class TitlePage {
     btn.className = "fill next title-next";
     btn.addEventListener("click", () => {
       document.body.removeChild(this.page);
-      // TODO: Display character selection page
+      new SelectionPage().show();
     });
     const p = document.createElement("p");
     p.className = "title-text";

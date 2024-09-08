@@ -1,9 +1,15 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { TitlePage } from "../../../src/models/pages/title";
+
+const show = vi.fn();
+vi.mock("../../../src/models/pages/selection", () => {
+  return { SelectionPage: vi.fn(() => ({ show })) };
+});
 
 describe("TitlePage", () => {
   it("Displayed page", () => {
     const testee = new TitlePage();
+    show.mockClear();
 
     testee.show();
 
@@ -27,5 +33,10 @@ describe("TitlePage", () => {
     expect(texts.length).toBe(1);
     expect(texts[0].className).toBe("title-text");
     expect(texts[0].textContent).toBe("M7 Summit");
+
+    buttons[0].click();
+
+    expect(show).toHaveBeenCalledOnce();
+    expect(show).toHaveBeenCalledWith();
   });
 });
