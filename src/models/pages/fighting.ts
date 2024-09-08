@@ -1,4 +1,5 @@
 import type { BaseMountain } from "../mountains/mountain";
+import { ResultPage } from "./result";
 
 export class FightingPage {
   private readonly page: HTMLDivElement;
@@ -24,7 +25,9 @@ export class FightingPage {
       if (this.now <= 0) {
         clearInterval(id);
         document.body.removeChild(this.page);
-        // TODO: Display result page
+        new ResultPage(
+          this.p1.getRatio() > this.p2.getRatio() ? this.p1 : this.p2,
+        ).show();
       }
     }, 1000);
   };

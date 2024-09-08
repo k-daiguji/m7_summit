@@ -71,3 +71,17 @@
   text-align: center;
   width: 10%
 }
+
+.result-icon {
+  border: 0;
+}
+
+.result-name {
+  font-size: 10vh;
+}
+
+.result-image {
+  padding: 0;
+  height: 85%;
+  width: 100%;
+}
