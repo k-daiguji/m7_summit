@@ -6,4 +6,7 @@ export const MOUNTAINS = [
   new Fuji(),
   new Fuji(),
   new Fuji(),
+  new Fuji(),
+  new Fuji(),
+  new Fuji(),
 ] as const;

@@ -32,3 +32,21 @@
   transform: skewX(-30deg);
   width: fit-content;
 }
+
+.selection-icon {
+  border: 1px solid;
+  padding: 0;
+  height: 33%;
+  width: 33%;
+}
+
+.selection-name {
+  color: black;
+  font-size: 5vh;
+}
+
+.selection-image {
+  padding: 0;
+  height: 75%;
+  width: 75%;
+}
