@@ -11,9 +11,7 @@ export class FightingPage {
   ) {
     this.page = document.createElement("div");
     this.appendHeader();
-    const canvas = document.createElement("canvas");
-    canvas.className = "fill";
-    this.page.appendChild(canvas);
+    this.appendStage();
   }
 
   public show = () => {
@@ -54,6 +52,7 @@ export class FightingPage {
     now.style.height = "50%";
     const name = document.createElement("div");
     name.textContent = target;
+    name.style.color = "orange";
     name.style.height = "50%";
     max.appendChild(now);
     bar.appendChild(max);
@@ -66,5 +65,12 @@ export class FightingPage {
     timer.className = "fighting-timer";
     timer.textContent = this.now.toString();
     return timer;
+  };
+
+  private appendStage = () => {
+    const stage = document.createElement("img");
+    stage.className = "fill";
+    stage.src = "./dist/datasets/NightSky.png";
+    this.page.appendChild(stage);
   };
 }
