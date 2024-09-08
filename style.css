@@ -50,3 +50,24 @@
   height: 75%;
   width: 75%;
 }
+
+.fighting-header {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  height: 6%
+}
+
+.fighting-bar {
+  display: flex;
+  height: 100%;
+}
+
+.fighting-timer {
+  align-content: center;
+  margin: 0;
+  top: 8px;
+  text-align: center;
+  width: 10%
+}

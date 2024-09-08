@@ -1,5 +1,6 @@
 import { MOUNTAINS } from "../../constants/mountains";
 import type { BaseMountain } from "../mountains/mountain";
+import { FightingPage } from "./fighting";
 
 export class SelectionPage {
   private readonly page: HTMLDivElement;
@@ -22,7 +23,7 @@ export class SelectionPage {
         players.push(m);
         if (players.length === 2) {
           document.body.removeChild(this.page);
-          // TODO: Display fighting page
+          new FightingPage(players[0], players[1]).show();
         }
       });
       const name = document.createElement("div");
