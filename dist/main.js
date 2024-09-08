@@ -1,1 +1,1 @@
-console.log("Called main.ts");
+(()=>{"use strict";class t{maxHp;atk;hp;constructor(t,a){this.maxHp=t,this.atk=a,this.hp=this.maxHp}getRatio=()=>{const t=this.hp/this.maxHp*100;return Math.max(0,Math.ceil(t))};attack=async t=>{t.hp=Math.max(0,t.hp-this.atk)}}const a=new class extends t{constructor(){super(3776,200)}getName=()=>"Fuji";getPath=()=>"./dist/datasets/Fuji.png"},s=document.createElement("img");s.src=a.getPath(),s.className="fill",document.body.appendChild(s)})();
