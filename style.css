@@ -7,3 +7,28 @@
   height: 100%;
   width: 100%;
 }
+
+.next {
+  background-color: transparent;
+  border-width: 0;
+}
+
+.title-image {
+  position: absolute;
+  height: 50%;
+  width: 50%;
+}
+
+.title-next {
+  align-content: center;
+  color: orange;
+  position: relative;
+  text-align: -webkit-center;
+}
+
+.title-text {
+  font-size: 15vh;
+  margin: 0;
+  transform: skewX(-30deg);
+  width: fit-content;
+}

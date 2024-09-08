@@ -1,7 +1,4 @@
-import { Fuji } from "./models/mountains/fuji";
+import { TitlePage } from "./models/pages/title";
 
-const fuji = new Fuji();
-const img = document.createElement("img");
-img.src = fuji.getPath();
-img.className = "fill";
-document.body.appendChild(img);
+const page = new TitlePage();
+page.show();
