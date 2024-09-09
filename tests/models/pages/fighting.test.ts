@@ -22,8 +22,13 @@ describe("FightingPage", () => {
     const timers = headers[0].getElementsByClassName("fighting-timer");
     expect(timers.length).toBe(1);
     expect(timers[0].textContent).toBe("99");
-    const stages = document.body.getElementsByClassName("fill");
-    expect(stages.length).toBe(1);
+    const imgs = document.body.getElementsByTagName("img");
+    expect(imgs.length).toBe(3);
+    const [stage, p1, p2] = imgs;
+    expect(stage.className).toBe("fill");
+    expect(stage.style.position).toBe("absolute");
+    expect(p1.className).toBe("fighting-p1");
+    expect(p2.className).toBe("fighting-p2");
 
     vi.advanceTimersByTime(98000);
 
