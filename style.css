@@ -73,6 +73,22 @@
   width: 10%
 }
 
+.fighting-p1 {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  height: 40%;
+  width: 40%
+}
+
+.fighting-p2 {
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  height: 40%;
+  width: 40%
+}
+
 .result-icon {
   border: 0;
 }

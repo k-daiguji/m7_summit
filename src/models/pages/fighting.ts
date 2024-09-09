@@ -10,8 +10,9 @@ export class FightingPage {
     private readonly p2: BaseMountain,
   ) {
     this.page = document.createElement("div");
-    this.appendHeader();
     this.appendStage();
+    this.appendHeader();
+    this.appendCharacters();
   }
 
   public show = () => {
@@ -70,7 +71,24 @@ export class FightingPage {
   private appendStage = () => {
     const stage = document.createElement("img");
     stage.className = "fill";
+    stage.style.position = "absolute";
     stage.src = "./dist/datasets/NightSky.png";
     this.page.appendChild(stage);
+  };
+
+  private appendCharacters = () => {
+    this.page.appendChild(
+      this.createCharacter(this.p1.getPath(), "fighting-p1"),
+    );
+    this.page.appendChild(
+      this.createCharacter(this.p2.getPath(), "fighting-p2"),
+    );
+  };
+
+  private createCharacter = (path: string, className: string) => {
+    const img = document.createElement("img");
+    img.className = className;
+    img.src = path;
+    return img;
   };
 }
