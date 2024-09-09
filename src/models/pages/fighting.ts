@@ -2,8 +2,16 @@ import type { BaseMountain } from "../mountains/mountain";
 import { ResultPage } from "./result";
 
 export class FightingPage {
+  private readonly keyMap = new Map([
+    ["Left", -1],
+    ["ArrowLeft", -1],
+    ["Right", 1],
+    ["ArrowRight", 1],
+  ]);
   private readonly page: HTMLDivElement;
   private now = 99;
+  private p1Element: HTMLImageElement | undefined = undefined;
+  private p2Element: HTMLImageElement | undefined = undefined;
 
   constructor(
     private readonly p1: BaseMountain,
@@ -17,6 +25,7 @@ export class FightingPage {
 
   public show = () => {
     document.body.appendChild(this.page);
+    document.body.onkeydown = (e: KeyboardEvent) => this.keydown(e);
     const id = setInterval(() => {
       this.now = this.now - 1;
       this.page.querySelector(".fighting-timer").textContent =
@@ -77,12 +86,10 @@ export class FightingPage {
   };
 
   private appendCharacters = () => {
-    this.page.appendChild(
-      this.createCharacter(this.p1.getPath(), "fighting-p1"),
-    );
-    this.page.appendChild(
-      this.createCharacter(this.p2.getPath(), "fighting-p2"),
-    );
+    this.p1Element = this.createCharacter(this.p1.getPath(), "fighting-p1");
+    this.page.appendChild(this.p1Element);
+    this.p2Element = this.createCharacter(this.p2.getPath(), "fighting-p2");
+    this.page.appendChild(this.p2Element);
   };
 
   private createCharacter = (path: string, className: string) => {
@@ -90,5 +97,11 @@ export class FightingPage {
     img.className = className;
     img.src = path;
     return img;
+  };
+
+  private keydown = (e: KeyboardEvent) => {
+    const current = Number(this.p1Element.style.left.replace(/[^0-9]/g, ""));
+    const offset = this.keyMap.get(e.key) ?? 0;
+    this.p1Element.style.left = `${Math.min(20, Math.max(0, current + offset))}%`;
   };
 }
