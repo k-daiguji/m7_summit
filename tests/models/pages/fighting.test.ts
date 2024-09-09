@@ -30,6 +30,22 @@ describe("FightingPage", () => {
     expect(p1.className).toBe("fighting-p1");
     expect(p2.className).toBe("fighting-p2");
 
+    document.body.onkeydown({ key: "Right" } as KeyboardEvent);
+
+    expect(p1.style.left).toBe("1%");
+
+    document.body.onkeydown({ key: "ArrowRight" } as KeyboardEvent);
+
+    expect(p1.style.left).toBe("2%");
+
+    document.body.onkeydown({ key: "Left" } as KeyboardEvent);
+
+    expect(p1.style.left).toBe("1%");
+
+    document.body.onkeydown({ key: "ArrowLeft" } as KeyboardEvent);
+
+    expect(p1.style.left).toBe("0%");
+
     vi.advanceTimersByTime(98000);
 
     expect(timers[0].textContent).toBe("1");
