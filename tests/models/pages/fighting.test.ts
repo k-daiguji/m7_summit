@@ -25,10 +25,10 @@ describe("FightingPage", () => {
     const imgs = document.body.getElementsByTagName("img");
     expect(imgs.length).toBe(3);
     const [stage, p1, p2] = imgs;
-    expect(stage.className).toBe("fill");
+    expect(stage.className).toBe("fill image");
     expect(stage.style.position).toBe("absolute");
-    expect(p1.className).toBe("fighting-p1");
-    expect(p2.className).toBe("fighting-p2");
+    expect(p1.className).toBe("image fighting-p1");
+    expect(p2.className).toBe("image fighting-p2");
 
     document.body.onkeydown({ key: "Right" } as KeyboardEvent);
 

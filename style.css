@@ -8,6 +8,11 @@
   width: 100%;
 }
 
+.image {
+  image-rendering: pixelated;
+  padding: 0;
+}
+
 .next {
   background-color: transparent;
   border-width: 0;
@@ -46,7 +51,6 @@
 }
 
 .selection-image {
-  padding: 0;
   height: 75%;
   width: 75%;
 }
@@ -98,7 +102,6 @@
 }
 
 .result-image {
-  padding: 0;
   height: 85%;
   width: 100%;
 }

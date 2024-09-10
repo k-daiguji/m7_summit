@@ -79,16 +79,22 @@ export class FightingPage {
 
   private appendStage = () => {
     const stage = document.createElement("img");
-    stage.className = "fill";
+    stage.className = "fill image";
     stage.style.position = "absolute";
     stage.src = "./dist/datasets/NightSky.png";
     this.page.appendChild(stage);
   };
 
   private appendCharacters = () => {
-    this.p1Element = this.createCharacter(this.p1.getPath(), "fighting-p1");
+    this.p1Element = this.createCharacter(
+      this.p1.getPath(),
+      "image fighting-p1",
+    );
     this.page.appendChild(this.p1Element);
-    this.p2Element = this.createCharacter(this.p2.getPath(), "fighting-p2");
+    this.p2Element = this.createCharacter(
+      this.p2.getPath(),
+      "image fighting-p2",
+    );
     this.page.appendChild(this.p2Element);
   };
 

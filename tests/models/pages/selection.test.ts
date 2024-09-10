@@ -28,7 +28,7 @@ describe("SelectionPage", () => {
       expect(texts[0].textContent).toBe(m.getName());
       const imgs = buttons[i].getElementsByTagName("img");
       expect(imgs.length).toBe(1);
-      expect(imgs[0].className).toBe("selection-image");
+      expect(imgs[0].className).toBe("image selection-image");
     });
 
     buttons[0].click();

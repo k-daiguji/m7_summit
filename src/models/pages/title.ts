@@ -35,7 +35,7 @@ export class TitlePage {
   private appendImage = (src: string, bottom: string, left: string) => {
     const img = document.createElement("img");
     img.src = src;
-    img.className = "title-image";
+    img.className = "image title-image";
     img.style.bottom = bottom;
     img.style.left = left;
     this.page.appendChild(img);
