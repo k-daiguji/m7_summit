@@ -22,7 +22,7 @@ describe("TitlePage", () => {
       { x: "50%", y: "50%" },
     ];
     positions.forEach((p, i) => {
-      expect(imgs[i].className).toBe("title-image");
+      expect(imgs[i].className).toBe("image title-image");
       expect(imgs[i].style.bottom).toBe(p.y);
       expect(imgs[i].style.left).toBe(p.x);
     });

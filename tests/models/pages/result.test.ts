@@ -23,7 +23,7 @@ describe("ResultPage", () => {
     expect(names[0].textContent).toBe("WINNER: Fuji");
     const imgs = buttons[0].getElementsByTagName("img");
     expect(imgs.length).toBe(1);
-    expect(imgs[0].className).toBe("result-image");
+    expect(imgs[0].className).toBe("image result-image");
     expect(show).toHaveBeenCalledTimes(0);
 
     buttons[0].click();

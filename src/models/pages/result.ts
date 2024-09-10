@@ -23,7 +23,7 @@ export class ResultPage {
     name.textContent = `WINNER: ${this.winner.getName()}`;
     const img = document.createElement("img");
     img.src = this.winner.getPath();
-    img.className = "result-image";
+    img.className = "image result-image";
     btn.appendChild(name);
     btn.appendChild(img);
     this.page.appendChild(btn);

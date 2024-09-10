@@ -31,7 +31,7 @@ export class SelectionPage {
       name.textContent = m.getName();
       const img = document.createElement("img");
       img.src = m.getPath();
-      img.className = "selection-image";
+      img.className = "image selection-image";
       btn.appendChild(name);
       btn.appendChild(img);
       this.page.appendChild(btn);
