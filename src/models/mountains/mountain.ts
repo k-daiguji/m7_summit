@@ -12,6 +12,8 @@ export abstract class BaseMountain {
 
   abstract getPath: () => string;
 
+  abstract getHeight: () => string;
+
   public getRatio = () => {
     const ratio = (this.hp / this.maxHp) * 100;
     return Math.max(0, Math.ceil(ratio));
