@@ -88,19 +88,26 @@ export class FightingPage {
   private appendCharacters = () => {
     this.p1Element = this.createCharacter(
       this.p1.getPath(),
+      this.p1.getHeight(),
       "image fighting-p1",
     );
     this.page.appendChild(this.p1Element);
     this.p2Element = this.createCharacter(
       this.p2.getPath(),
+      this.p2.getHeight(),
       "image fighting-p2",
     );
     this.page.appendChild(this.p2Element);
   };
 
-  private createCharacter = (path: string, className: string) => {
+  private createCharacter = (
+    path: string,
+    height: string,
+    className: string,
+  ) => {
     const img = document.createElement("img");
     img.className = className;
+    img.style.height = height;
     img.src = path;
     return img;
   };

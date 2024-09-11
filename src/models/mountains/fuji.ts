@@ -8,4 +8,6 @@ export class Fuji extends BaseMountain {
   public getName = () => "Fuji";
 
   public getPath = () => "./dist/datasets/Fuji.png";
+
+  public getHeight = () => "37%";
 }

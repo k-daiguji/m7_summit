@@ -1,16 +1,40 @@
 import { describe, expect, it, vi } from "vitest";
 import { FightingPage } from "../../../src/models/pages/fighting";
-import { Fuji } from "../../../src/models/mountains/fuji";
+import { BaseMountain } from "../../../src/models/mountains/mountain";
 
 const show = vi.fn();
 vi.mock("../../../src/models/pages/result", () => {
   return { ResultPage: vi.fn(() => ({ show })) };
 });
 
+class DummyP1 extends BaseMountain {
+  constructor() {
+    super(100, 25);
+  }
+
+  public getName = () => "P1";
+
+  public getPath = () => "./dist/datasets/P1.png";
+
+  public getHeight = () => "1%";
+}
+
+class DummyP2 extends BaseMountain {
+  constructor() {
+    super(500, 10);
+  }
+
+  public getName = () => "P2";
+
+  public getPath = () => "./dist/datasets/P2.png";
+
+  public getHeight = () => "5%";
+}
+
 describe("FightingPage", () => {
   it("Displayed page", () => {
     vi.useFakeTimers();
-    const testee = new FightingPage(new Fuji(), new Fuji());
+    const testee = new FightingPage(new DummyP1(), new DummyP2());
     show.mockClear();
 
     testee.show();
@@ -28,7 +52,9 @@ describe("FightingPage", () => {
     expect(stage.className).toBe("fill image");
     expect(stage.style.position).toBe("absolute");
     expect(p1.className).toBe("image fighting-p1");
+    expect(p1.style.height).toBe("1%");
     expect(p2.className).toBe("image fighting-p2");
+    expect(p2.style.height).toBe("5%");
 
     document.body.onkeydown({ key: "Right" } as KeyboardEvent);
 

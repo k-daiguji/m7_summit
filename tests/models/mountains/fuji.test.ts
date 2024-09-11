@@ -18,6 +18,14 @@ describe("Fuji", () => {
     expect(actual).toBe("./dist/datasets/Fuji.png");
   });
 
+  it("Got height", () => {
+    const testee = new Fuji();
+
+    const actual = testee.getHeight();
+
+    expect(actual).toBe("37%");
+  });
+
   it("Changed hp ratio", () => {
     const p1 = new Fuji();
     const p2 = new Fuji();
