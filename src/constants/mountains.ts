@@ -1,3 +1,4 @@
+import { Aconcagua } from "../models/mountains/aconcagua";
 import { Everest } from "../models/mountains/everest";
 import { Fuji } from "../models/mountains/fuji";
 import { K2 } from "../models/mountains/k2";
@@ -10,8 +11,7 @@ export const MOUNTAINS = [
   new K2(),
   new Kilimanjaro(),
   new Matterhorn(),
+  new Aconcagua(),
   new Fuji(),
   new Kilauea(),
-  // TODO: Change unique characters
-  new Fuji(),
 ] as const;
