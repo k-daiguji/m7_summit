@@ -13,6 +13,7 @@
   },
   "scripts": {
     "build": "rm -r dist;webpack;cp -r src/datasets dist;",
-    "test": "vitest"
+    "test": "vitest",
+    "release": "rm -r release;mkdir release;cp -r index.html release;cp -r style.css release;cp -r dist release;"
   }
 }
