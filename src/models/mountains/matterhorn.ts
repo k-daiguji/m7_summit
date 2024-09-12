@@ -10,4 +10,6 @@ export class Matterhorn extends BaseMountain {
   public getPath = () => "./dist/datasets/Matterhorn.png";
 
   public getHeight = () => "44%";
+
+  public getAttackImage = () => "./dist/datasets/Snow.png";
 }

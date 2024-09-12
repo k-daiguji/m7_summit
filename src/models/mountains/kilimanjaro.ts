@@ -10,4 +10,6 @@ export class Kilimanjaro extends BaseMountain {
   public getPath = () => "./dist/datasets/Kilimanjaro.png";
 
   public getHeight = () => "58%";
+
+  public getAttackImage = () => "./dist/datasets/Green.png";
 }

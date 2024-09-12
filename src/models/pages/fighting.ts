@@ -35,7 +35,26 @@ export class FightingPage {
       this.now = this.now - 1;
       this.page.querySelector(".fighting-timer").textContent =
         this.now.toString();
-      this.p2.attack(this.p1);
+
+      const current = Number(this.p2Element.style.left.replace(/[^0-9]/g, ""));
+      let position = Math.min(20, Math.max(0, current));
+      this.p2Element.style.right = "0%";
+      let time = 50;
+      if (this.p2.attack(this.p1)) {
+        const img = document.createElement("img");
+        img.className = "image fighting-p2";
+        img.src = this.p2.getAttackImage();
+        img.style.right = `${position}%`;
+        document.body.appendChild(img);
+        const id = setInterval(() => {
+          img.style.right = `${position++}%`;
+          time--;
+          if (time === 0) {
+            document.body.removeChild(img);
+            clearInterval(id);
+          }
+        }, 5);
+      }
       if (this.p1.getRatio() === 0) this.finish();
       this.p1HpBar.style.width = `${this.p1.getRatio()}%`;
       if (this.now <= 0) this.finish();
@@ -131,9 +150,25 @@ export class FightingPage {
   private keydown = (e: KeyboardEvent) => {
     const current = Number(this.p1Element.style.left.replace(/[^0-9]/g, ""));
     const offset = this.moveMap.get(e.key) ?? 0;
-    this.p1Element.style.left = `${Math.min(20, Math.max(0, current + offset))}%`;
+    let position = Math.min(20, Math.max(0, current + offset));
+    this.p1Element.style.left = `${position}%`;
     if (e.key === "a") {
-      this.p1.attack(this.p2);
+      let time = 50;
+      if (this.p1.attack(this.p2)) {
+        const img = document.createElement("img");
+        img.className = "image fighting-p1";
+        img.src = this.p1.getAttackImage();
+        img.style.left = `${position}%`;
+        document.body.appendChild(img);
+        const id = setInterval(() => {
+          img.style.left = `${position++}%`;
+          time--;
+          if (time === 0) {
+            document.body.removeChild(img);
+            clearInterval(id);
+          }
+        }, 5);
+      }
       if (this.p2.getRatio() === 0) this.finish();
       this.p2HpBar.style.width = `${this.p2.getRatio()}%`;
     }

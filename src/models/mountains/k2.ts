@@ -10,4 +10,6 @@ export class K2 extends BaseMountain {
   public getPath = () => "./dist/datasets/K2.png";
 
   public getHeight = () => "86%";
+
+  public getAttackImage = () => "./dist/datasets/Snow.png";
 }

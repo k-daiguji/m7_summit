@@ -17,6 +17,8 @@ class DummyP1 extends BaseMountain {
   public getPath = () => "./dist/datasets/P1.png";
 
   public getHeight = () => "1%";
+
+  public getAttackImage: () => "./dist/datasets/P1Attack.png";
 }
 
 class DummyP2 extends BaseMountain {
@@ -29,6 +31,8 @@ class DummyP2 extends BaseMountain {
   public getPath = () => "./dist/datasets/P2.png";
 
   public getHeight = () => "5%";
+
+  public getAttackImage: () => "./dist/datasets/P2Attack.png";
 }
 
 describe("FightingPage", () => {

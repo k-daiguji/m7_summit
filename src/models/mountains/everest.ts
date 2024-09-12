@@ -10,4 +10,6 @@ export class Everest extends BaseMountain {
   public getPath = () => "./dist/datasets/Everest.png";
 
   public getHeight = () => "88%";
+
+  public getAttackImage = () => "./dist/datasets/Snow.png";
 }

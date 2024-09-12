@@ -17,6 +17,8 @@ export abstract class BaseMountain {
 
   abstract getHeight: () => string;
 
+  abstract getAttackImage: () => string;
+
   public reset = () => {
     this.hp = this.maxHp;
   };
@@ -26,13 +28,15 @@ export abstract class BaseMountain {
     return Math.max(0, Math.ceil(ratio));
   };
 
-  public attack = async (target: BaseMountain) => {
+  public attack = (target: BaseMountain) => {
     if (this.canAttack) {
-      target.hp = Math.max(0, target.hp - this.atk);
       this.canAttack = false;
       setTimeout(() => {
+        target.hp = Math.max(0, target.hp - this.atk);
         this.canAttack = true;
       }, this.speed);
+      return true;
     }
+    return false;
   };
 }

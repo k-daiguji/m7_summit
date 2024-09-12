@@ -10,4 +10,6 @@ export class Aconcagua extends BaseMountain {
   public getPath = () => "./dist/datasets/Aconcagua.png";
 
   public getHeight = () => "69%";
+
+  public getAttackImage = () => "./dist/datasets/Volcanic.png";
 }
