@@ -2,7 +2,7 @@ import type { BaseMountain } from "../mountains/mountain";
 import { ResultPage } from "./result";
 
 export class FightingPage {
-  private readonly keyMap = new Map([
+  private readonly moveMap = new Map([
     ["Left", -1],
     ["ArrowLeft", -1],
     ["Right", 1],
@@ -12,11 +12,16 @@ export class FightingPage {
   private now = 99;
   private p1Element: HTMLImageElement | undefined = undefined;
   private p2Element: HTMLImageElement | undefined = undefined;
+  private p1HpBar: HTMLDivElement | undefined = undefined;
+  private p2HpBar: HTMLDivElement | undefined = undefined;
+  private id: NodeJS.Timeout | undefined = undefined;
 
   constructor(
     private readonly p1: BaseMountain,
     private readonly p2: BaseMountain,
   ) {
+    this.p1.reset();
+    this.p2.reset();
     this.page = document.createElement("div");
     this.appendStage();
     this.appendHeader();
@@ -26,18 +31,24 @@ export class FightingPage {
   public show = () => {
     document.body.appendChild(this.page);
     document.body.onkeydown = (e: KeyboardEvent) => this.keydown(e);
-    const id = setInterval(() => {
+    this.id = setInterval(() => {
       this.now = this.now - 1;
       this.page.querySelector(".fighting-timer").textContent =
         this.now.toString();
-      if (this.now <= 0) {
-        clearInterval(id);
-        document.body.removeChild(this.page);
-        new ResultPage(
-          this.p1.getRatio() > this.p2.getRatio() ? this.p1 : this.p2,
-        ).show();
-      }
+      this.p2.attack(this.p1);
+      if (this.p1.getRatio() === 0) this.finish();
+      this.p1HpBar.style.width = `${this.p1.getRatio()}%`;
+      if (this.now <= 0) this.finish();
     }, 1000);
+  };
+
+  private finish = () => {
+    clearInterval(this.id);
+    document.body.onkeydown = () => undefined;
+    document.body.removeChild(this.page);
+    new ResultPage(
+      this.p1.getRatio() > this.p2.getRatio() ? this.p1 : this.p2,
+    ).show();
   };
 
   private appendHeader = () => {
@@ -60,6 +71,11 @@ export class FightingPage {
     const now = document.createElement("div");
     now.style.backgroundColor = "yellow";
     now.style.height = "50%";
+    if (this.p1HpBar) {
+      this.p2HpBar = now;
+    } else {
+      this.p1HpBar = now;
+    }
     const name = document.createElement("div");
     name.textContent = target;
     name.style.color = "orange";
@@ -114,7 +130,12 @@ export class FightingPage {
 
   private keydown = (e: KeyboardEvent) => {
     const current = Number(this.p1Element.style.left.replace(/[^0-9]/g, ""));
-    const offset = this.keyMap.get(e.key) ?? 0;
+    const offset = this.moveMap.get(e.key) ?? 0;
     this.p1Element.style.left = `${Math.min(20, Math.max(0, current + offset))}%`;
+    if (e.key === "a") {
+      this.p1.attack(this.p2);
+      if (this.p2.getRatio() === 0) this.finish();
+      this.p2HpBar.style.width = `${this.p2.getRatio()}%`;
+    }
   };
 }
