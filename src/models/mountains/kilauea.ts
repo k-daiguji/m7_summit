@@ -10,4 +10,6 @@ export class Kilauea extends BaseMountain {
   public getPath = () => "./dist/datasets/Kilauea.png";
 
   public getHeight = () => "12%";
+
+  public getAttackImage = () => "./dist/datasets/Volcanic.png";
 }
