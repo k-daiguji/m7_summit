@@ -28,6 +28,10 @@ export abstract class BaseMountain {
     return Math.max(0, Math.ceil(ratio));
   };
 
+  public penalty = () => {
+    this.hp = Math.max(0, this.hp - this.atk * 13);
+  };
+
   public attack = (target: BaseMountain) => {
     if (this.canAttack) {
       this.canAttack = false;

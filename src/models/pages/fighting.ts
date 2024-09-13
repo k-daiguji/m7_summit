@@ -10,6 +10,7 @@ export class FightingPage {
   ]);
   private readonly page: HTMLDivElement;
   private now = 99;
+  private attackCount = 0;
   private p1Element: HTMLImageElement | undefined = undefined;
   private p2Element: HTMLImageElement | undefined = undefined;
   private p1HpBar: HTMLDivElement | undefined = undefined;
@@ -40,6 +41,7 @@ export class FightingPage {
       let position = Math.min(20, Math.max(0, current));
       this.p2Element.style.right = "0%";
       let time = 50;
+      if (++this.attackCount === 13) this.p2.penalty();
       if (this.p2.attack(this.p1)) {
         const img = document.createElement("img");
         img.className = "image fighting-p2";
@@ -55,8 +57,9 @@ export class FightingPage {
           }
         }, 5);
       }
-      if (this.p1.getRatio() === 0) this.finish();
+      if (this.p1.getRatio() === 0 || this.p2.getRatio() === 0) this.finish();
       this.p1HpBar.style.width = `${this.p1.getRatio()}%`;
+      this.p2HpBar.style.width = `${this.p2.getRatio()}%`;
       if (this.now <= 0) this.finish();
     }, 1000);
   };
@@ -154,6 +157,7 @@ export class FightingPage {
     this.p1Element.style.left = `${position}%`;
     if (e.key === "a") {
       let time = 50;
+      if (++this.attackCount === 13) this.p1.penalty();
       if (this.p1.attack(this.p2)) {
         const img = document.createElement("img");
         img.className = "image fighting-p1";
@@ -169,7 +173,8 @@ export class FightingPage {
           }
         }, 5);
       }
-      if (this.p2.getRatio() === 0) this.finish();
+      if (this.p1.getRatio() === 0 || this.p2.getRatio() === 0) this.finish();
+      this.p1HpBar.style.width = `${this.p1.getRatio()}%`;
       this.p2HpBar.style.width = `${this.p2.getRatio()}%`;
     }
   };
